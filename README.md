@@ -12,25 +12,25 @@ Running the application:
 
 Database Design:
 
-                Question Type   Template Question Control Header
-                       |        |                           
-Template -----< Template Question ------< Template Question Choice <-|
-    |               |                       ^        ^        |______|
-    |               |     |-----------------|        |
-    |               |     |                          |
-    |               |     |                          |
-    |               |     |                          |
-Survey -------< Survey Response ------< Survey Control Response 
+                Question Type   
+                       |                                  
+Template -----< Template Question ------< Template Question Choice -------< Template Question Control Choice
+    |               |                       ^                                       ^        
+    |               |     |-----------------|                                       |
+    |               |     |                                                         |
+    |               |     |                                                         |
+    |               |     |                                                         |
+Survey -------< Survey Response ------< Survey Control Response ---------------------
 
 Template: Template for a survey
 
 Template Question: Question for a template
 
-Template Question Choice:  Choice for a question or part of a question (if control)
+Template Question Choice:  Choice for a question (Multiplce Choice)
+
+Template Question Control Choice:  Choice for part of a control question
 
 Question Type: Type of question (T/F, MC, Short Answer, Control)
-
-Template Question Control Header:  Header options for a control question
 
 Survey: Instance of a Template
 

@@ -20,21 +20,22 @@ class QuestionType(models.Model):
 class TemplateQuestion(models.Model):
     description = models.CharField(max_length=100)
     question = models.CharField(max_length=300)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', default=None, blank=True, null=True)
     index = models.IntegerField()
     template = models.ForeignKey(Template, on_delete=models.CASCADE)
     questiontype = models.ForeignKey(QuestionType, on_delete=models.DO_NOTHING)
 
-class TemplateQuestionControlHeader(models.Model):
-    text = models.CharField(max_length=25)
-    templatequestion = models.ForeignKey(TemplateQuestion, on_delete=models.CASCADE)
-
 class TemplateQuestionChoice(models.Model):
     templatequestion = models.ForeignKey(TemplateQuestion, on_delete=models.CASCADE)
     index = models.IntegerField()
-    description = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='images/')
-    controlchoice = models.ForeignKey('self', on_delete=models.CASCADE)
+    description = models.CharField(max_length=100, default=None, blank=True, null=True)
+    image = models.ImageField(upload_to='images/', default=None, blank=True, null=True)
+
+class TemplateQuestionControlChoice(models.Model):
+    templatequestionchoice = models.ForeignKey(TemplateQuestionChoice, on_delete=models.CASCADE)
+    index = models.IntegerField()
+    description = models.CharField(max_length=100, default=None, blank=True, null=True)
+    image = models.ImageField(upload_to='images/', default=None, blank=True, null=True)
 
 # Instance of a Template
 class Survey(models.Model):
@@ -45,10 +46,10 @@ class Survey(models.Model):
 # Answer to a question (T/F, Multiple Choice, Shortanswer)
 class SurveyResponse(models.Model):
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
-    templatequestion = models.ForeignKey(TemplateQuestion, on_delete=models.DO_NOTHING)
-    answershort = models.CharField(max_length=250)
-    answerbool = models.BooleanField()
-    templatequestionchoice = models.ForeignKey(TemplateQuestionChoice, on_delete=models.DO_NOTHING)
+    templatequestion = models.ForeignKey(TemplateQuestion, on_delete=models.DO_NOTHING, default=None, blank=True, null=True)
+    answershort = models.CharField(max_length=250, default=None, blank=True, null=True)
+    answerbool = models.BooleanField(default=None, blank=True, null=True)
+    templatequestionchoice = models.ForeignKey(TemplateQuestionChoice, on_delete=models.DO_NOTHING, default=None, blank=True, null=True)
 
 # Answer to a control question
 class SurveyControlResponse(models.Model):

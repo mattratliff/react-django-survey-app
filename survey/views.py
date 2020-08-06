@@ -1,5 +1,5 @@
-from .models import User, Template, TemplateQuestion, QuestionType
-from .serializers import UserSerializer, TemplateSerializer, TemplateQuestionSerializer, QuestionTypeSerializer
+from .models import User, Template, TemplateQuestion, TemplateQuestionChoice, TemplateQuestionControlChoice, QuestionType
+from .serializers import UserSerializer, TemplateSerializer, TemplateQuestionSerializer, TemplateQuestionChoiceSerializer, TemplateQuestionControlChoiceSerializer, QuestionTypeSerializer
 from rest_framework import generics
 
 class UserListCreate(generics.ListCreateAPIView):
@@ -13,6 +13,14 @@ class TemplateListCreate(generics.ListCreateAPIView):
 class TemplateQuestionListCreate(generics.ListCreateAPIView):
     queryset = TemplateQuestion.objects.all()
     serializer_class = TemplateQuestionSerializer
+
+class TemplateQuestionChoiceListCreate(generics.ListCreateAPIView):
+    queryset = TemplateQuestionChoice.objects.all()
+    serializer_class = TemplateQuestionChoiceSerializer
+
+class TemplateQuestionControlChoiceListCreate(generics.ListCreateAPIView):
+    queryset = TemplateQuestionControlChoice.objects.all()
+    serializer_class = TemplateQuestionControlChoiceSerializer
 
 class QuestionTypeListCreate(generics.ListCreateAPIView):
     queryset = QuestionType.objects.all()

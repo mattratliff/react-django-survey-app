@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("api/user")
+    fetch("api/templatequestion")
       .then(response => {
         if (response.status > 400) {
           return this.setState(() => {
@@ -33,11 +33,11 @@ class App extends Component {
 
   render() {
     return (
-      <ul>
-        {this.state.data.map(contact => {
+        <ul>
+        {this.state.data.map(template => {
           return (
-            <li key={contact.id}>
-              {contact.fname} {contact.lname} - {contact.email}
+            <li key={template.id}>
+              {template.question}
             </li>
           );
         })}

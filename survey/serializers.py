@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Template, TemplateQuestion, QuestionType
+from .models import User, Template, TemplateQuestion, TemplateQuestionChoice, TemplateQuestionControlChoice, QuestionType
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,3 +21,12 @@ class TemplateQuestionSerializer(serializers.ModelSerializer):
         model = TemplateQuestion
         fields = ('id', 'description', 'question', 'image', 'index', 'template', 'questiontype')
 
+class TemplateQuestionChoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TemplateQuestionChoice
+        fields = ('id', 'templatequestion', 'index', 'description', 'image')
+
+class TemplateQuestionControlChoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TemplateQuestionControlChoice
+        fields = ('id', 'templatequestionchoice', 'index', 'description', 'image')
