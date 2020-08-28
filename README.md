@@ -12,15 +12,7 @@ Running the application:
 
 Database Design:
 
-                Question Type   
-                       |                                  
-Template -----< Template Question ------< Template Question Choice -------< Template Question Control Choice
-    |               |                       ^                                       ^        
-    |               |     |-----------------|                                       |
-    |               |     |                                                         |
-    |               |     |                                                         |
-    |               |     |                                                         |
-Survey -------< Survey Response ------< Survey Control Response ---------------------
+![Database diagram](https://github.com/mattratliff/react-drf/blob/master/Snip20200828_14.png)
 
 Template: Template for a survey
 
